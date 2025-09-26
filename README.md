@@ -6,7 +6,12 @@
 
 Bu proje, **Evrişimli Sinir Ağı (Convolutional Neural Network - CNN)** modeli kullanılarak görsellerin sınıflandırılmasını amaçlamaktadır. Eğitim süreci, doğrulama sonuçları ve test performansı detaylı olarak analiz edilmiştir.
 
----
+## Veri Seti
+
+Bu proje için kullanılan veri setine aşağıdaki bağlantıdan ulaşabilirsiniz:
+
+[5-class weather status image classification - Kaggle](https://www.kaggle.com/datasets/ammaralfaifi/5class-weather-status-image-classification)
+
 
 ## 📂 Proje İçeriği & Model Detayları
 
