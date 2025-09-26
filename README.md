@@ -14,7 +14,7 @@ Bu proje, **Evrişimli Sinir Ağı (Convolutional Neural Network - CNN)** modeli
 
 * Görseller eğitim, doğrulama ve test klasörlerinden alınmıştır.
 * Görseller **ImageDataGenerator** ile **0–1 aralığında normalize** edilmiştir.
-* Giriş boyutu (`target_size`) **(150, 150)** olarak ayarlanmıştır.
+* Giriş boyutu (`target_size`) **(64, 64)** olarak ayarlanmıştır.
 
 ### Model Mimarisi (Sequential CNN)
 
@@ -27,7 +27,7 @@ Bu proje, **Evrişimli Sinir Ağı (Convolutional Neural Network - CNN)** modeli
 ### Eğitim Parametreleri
 
 * **Epochs:** 100
-* **Batch Size:** 32
+* **Batch Size:** 128
 * **Loss:** `categorical_crossentropy`
 * **Optimizer:** Adam (`learning_rate=0.0005`)
 * **Metric:** `accuracy`
