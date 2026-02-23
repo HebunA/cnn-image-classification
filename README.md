@@ -4,7 +4,7 @@
 
 ##  Project Objective
 
-This project aims to classify images using a **Convolutional Neural Network (CNN)** architecture. The training process, validation results, and test performance are thoroughly analyzed to evaluate the effectiveness of the model on a multi-class image classification task.
+This project aims to classify weather conditions from images using a Convolutional Neural Network (CNN) architecture. The model is trained, validated, and tested on a multi-class weather image dataset, and performance is evaluated through visualization and interpretability techniques such as Grad-CAM.
 
 ##  Dataset
 
