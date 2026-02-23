@@ -1,4 +1,4 @@
-#  CNN Model – Image Classification
+#  Weather Image Classification using Convolutional Neural Networks (CNN)
 
 ---
 
