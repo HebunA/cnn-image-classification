@@ -86,8 +86,6 @@ val/
 test/
 ```
 
-(each folder should contain class-labeled subfolders)
-
 3. Run the Jupyter Notebook:
 
 * Use `model.fit()` for training
@@ -95,6 +93,11 @@ test/
 * Use `model.predict()` for inference
 
 ---
+## Reproducibility Note
+The model training process (100 epochs) is computationally intensive and was performed separately.  
+This repository provides a clean notebook version without cell outputs for readability, version control, and academic presentation.  
+The model architecture, training pipeline, and evaluation code are fully included for reproducibility.
+(each folder should contain class-labeled subfolders)
 
 ##  Future Improvements
 
