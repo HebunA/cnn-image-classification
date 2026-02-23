@@ -64,7 +64,7 @@ Grad-CAM visualizes which regions of an image the model focuses on during predic
 
  Example:
 
-![Grad-CAM Visualization](gorseller/grad_cam_ornek.png)
+![Grad-CAM Visualization](grad_cam_ornek.png)
 
 In the visualization, **red regions** represent the areas that most strongly influence the model’s classification decision.
 
