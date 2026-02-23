@@ -1,93 +1,112 @@
-# 🧠 CNN Modeli – Görüntü Sınıflandırma
+#  CNN Model – Image Classification
 
 ---
 
-## 📌 Proje Amacı
+##  Project Objective
 
-Bu proje, **Evrişimli Sinir Ağı (Convolutional Neural Network - CNN)** modeli kullanılarak görsellerin sınıflandırılmasını amaçlamaktadır. Eğitim süreci, doğrulama sonuçları ve test performansı detaylı olarak analiz edilmiştir.
+This project aims to classify images using a **Convolutional Neural Network (CNN)** architecture. The training process, validation results, and test performance are thoroughly analyzed to evaluate the effectiveness of the model on a multi-class image classification task.
 
-## Veri Seti
+##  Dataset
 
-Bu proje için kullanılan veri setine aşağıdaki bağlantıdan ulaşabilirsiniz:
+The dataset used in this project is publicly available on Kaggle:
 
-[5-class weather status image classification - Kaggle](https://www.kaggle.com/datasets/ammaralfaifi/5class-weather-status-image-classification)
+[5-Class Weather Status Image Classification - Kaggle](https://www.kaggle.com/datasets/ammaralfaifi/5class-weather-status-image-classification)
 
+It consists of weather condition images categorized into multiple classes and is suitable for supervised deep learning tasks.
 
-## 📂 Proje İçeriği & Model Detayları
+---
 
-### Veri Yükleme & Ön İşleme
+##  Project Structure & Model Details
 
-* Görseller eğitim, doğrulama ve test klasörlerinden alınmıştır.
-* Görseller **ImageDataGenerator** ile **0–1 aralığında normalize** edilmiştir.
-* Giriş boyutu (`target_size`) **(64, 64)** olarak ayarlanmıştır.
+### Data Loading & Preprocessing
 
-### Model Mimarisi (Sequential CNN)
+* Images are loaded from `train/`, `val/`, and `test` directories.
+* Pixel values are normalized to the **[0, 1] range** using `ImageDataGenerator`.
+* Input image size (`target_size`) is set to **(64, 64)**.
+* The dataset is prepared for multi-class classification.
 
-* `Conv2D` + `MaxPooling2D` katmanları (Özellik Çıkarma)
-* `Flatten` katmanı (Vektörleştirme)
-* `Dense` katmanları (Tam bağlı sinir ağı)
-* `Dropout` (Overfitting'i önleme)
-* Çıkış katmanında çoklu sınıflandırma için `softmax` aktivasyonu kullanılmıştır.
+### Model Architecture (Sequential CNN)
 
-### Eğitim Parametreleri
+The model is built using a Sequential CNN architecture consisting of:
+
+* `Conv2D` + `MaxPooling2D` layers for feature extraction
+* `Flatten` layer for vectorization
+* Fully connected `Dense` layers for classification
+* `Dropout` layer to reduce overfitting
+* `Softmax` activation function in the output layer for multi-class prediction
+
+### Training Configuration
 
 * **Epochs:** 100
 * **Batch Size:** 128
-* **Loss:** `categorical_crossentropy`
-* **Optimizer:** Adam (`learning_rate=0.0005`)
-* **Metric:** `accuracy`
+* **Loss Function:** `categorical_crossentropy`
+* **Optimizer:** Adam (`learning_rate = 0.0005`)
+* **Evaluation Metric:** Accuracy
 
 ---
 
-## 📊 Performans Değerlendirmesi
+##  Performance Evaluation
 
-Modelin 100 epoch sonunda ulaştığı doğruluk (accuracy) oranları:
+After 100 epochs of training, the model achieved the following results:
 
-* **Eğitim Seti Doğruluğu:** %86
-* **Doğrulama Seti Doğruluğu:** %85
-* **Test Seti Doğruluğu:** %86
+* **Training Accuracy:** 86%
+* **Validation Accuracy:** 85%
+* **Test Accuracy:** 86%
 
----
-
-## 🔎 Model Açıklanabilirliği – Grad-CAM
-
-Modelin tahmin sürecini daha anlaşılır hale getirmek için **Grad-CAM** yöntemi kullanılmıştır. Bu yöntem, modelin görselin hangi bölgelerine odaklandığını **ısı haritası (heatmap)** ile gösterir.
-
-📸 Örnek:
-
-![Modelin Neye Odaklandığını Gösteren Grad-CAM Görseli](gorseller/grad_cam_ornek.png)
-
-Görüntüde **kırmızı bölgeler**, modelin sınıflandırma yaparken en çok dikkate aldığı alanları göstermektedir.
+These results indicate that the model generalizes well without significant overfitting.
 
 ---
 
-## ⚙️ Kullanım
+##  Model Explainability – Grad-CAM
 
-1.  Gerekli bağımlılıkları yükleyin:
+To improve interpretability, the **Grad-CAM (Gradient-weighted Class Activation Mapping)** technique is applied.
+Grad-CAM visualizes which regions of an image the model focuses on during prediction by generating a heatmap.
 
-    ```bash
-    pip install tensorflow numpy pandas matplotlib scikit-learn
-    ```
+ Example:
 
-2.  Verinizi `train/`, `val/`, `test/` klasörlerine sınıflara ayrılmış şekilde yerleştirin.
+![Grad-CAM Visualization](gorseller/grad_cam_ornek.png)
 
-3.  Jupyter/Kaggle Notebook’u çalıştırın:
-    * Eğitim için `model.fit()`
-    * Değerlendirme için grafikler ve `model.evaluate()`
-    * Tahmin için `model.predict()` örnekleri
+In the visualization, **red regions** represent the areas that most strongly influence the model’s classification decision.
 
 ---
 
-## 🔮 İleri Çalışmalar
+##  Usage
 
-* **Veri Artırma (Data Augmentation)** (zoom, rotation, flip vb.) ile veri çeşitliliği artırılabilir.
-* **Transfer Learning** (VGG16, ResNet50 gibi) kullanılarak daha yüksek başarı sağlanabilir.
-* **Hiperparametre optimizasyonu** (learning rate, batch size) yapılabilir.
+1. Install the required dependencies:
+
+```bash
+pip install tensorflow numpy pandas matplotlib scikit-learn
+```
+
+2. Organize your dataset into the following directory structure:
+
+```
+train/
+val/
+test/
+```
+
+(each folder should contain class-labeled subfolders)
+
+3. Run the Jupyter Notebook:
+
+* Use `model.fit()` for training
+* Use `model.evaluate()` for evaluation
+* Use `model.predict()` for inference
 
 ---
 
-## 📜 Lisans
+##  Future Improvements
 
-Bu proje eğitim amaçlı hazırlanmıştır. Kaggle notebook’unu referans alabilirsiniz:
+* Apply **Data Augmentation** (rotation, zoom, flip, etc.) to increase dataset diversity
+* Use **Transfer Learning** (e.g., VGG16, ResNet50) for higher accuracy
+* Perform **Hyperparameter Optimization** (learning rate, batch size, architecture tuning)
 
-👉 [CNN Modeli - Kaggle Notebook](https://www.kaggle.com/code/hebunartut/cnn-modeli)
+---
+
+##  License
+
+This project is developed for educational and research purposes.
+You can also refer to the related Kaggle notebook:
+
+👉 https://www.kaggle.com/code/hebunartut/cnn-modeli
